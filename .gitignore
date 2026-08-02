@@ -3,3 +3,6 @@ PROMPT.md
 assets/
 content/
 images/attorney-israel-lavi.png
+
+# Local Netlify folder
+.netlify
