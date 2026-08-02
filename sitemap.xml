@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: להחליף את ה-loc בכתובת הדומיין הסופית -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>/</loc></url>
+  <url><loc>/about.html</loc></url>
+  <url><loc>/team.html</loc></url>
+  <url><loc>/services.html</loc></url>
+  <url><loc>/articles.html</loc></url>
+  <url><loc>/article-1.html</loc></url>
+  <url><loc>/article-2.html</loc></url>
+  <url><loc>/article-3.html</loc></url>
+  <url><loc>/article-4.html</loc></url>
+  <url><loc>/article-5.html</loc></url>
+  <url><loc>/article-6.html</loc></url>
+  <url><loc>/article-7.html</loc></url>
+  <url><loc>/faq.html</loc></url>
+  <url><loc>/contact.html</loc></url>
+</urlset>

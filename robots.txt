@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: להוסיף Sitemap עם הדומיין הסופי
+# Sitemap: https://EXAMPLE/sitemap.xml
