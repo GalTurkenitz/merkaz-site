@@ -104,20 +104,21 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 }
 .nav__toggle span { width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.3s, opacity 0.2s; }
 
+/* Mobile: the whole menu stays on screen as a second, wrapping row — the
+   client asked that visitors see the sections instead of hunting for them
+   behind a hamburger, so the toggle is dropped entirely below this width. */
 @media (max-width: 980px) {
-  .nav__links, .nav__cta { display: none; }
-  .nav__toggle { display: flex; }
-  .site-header.open .nav__links {
-    display: flex; position: absolute; inset-inline: 0; top: 100%;
-    flex-direction: column; align-items: stretch; gap: 0;
-    background: var(--green); border-bottom: 1px solid var(--line-dark); padding: 0.5rem 0 1rem;
+  .nav { flex-wrap: wrap; gap: 0.75rem 1rem; min-height: 0; padding-block: 0.85rem; }
+  .nav__toggle { display: none; }
+  .nav__logo img { height: 48px; }
+  .nav__cta { display: inline-flex; padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+  .nav__links {
+    order: 3; width: 100%;
+    flex-wrap: wrap; justify-content: center;
+    row-gap: 0.55rem; column-gap: 1.15rem;
+    padding-top: 0.7rem; border-top: 1px solid var(--line-dark);
   }
-  .site-header.open .nav__links a { padding: 0.9rem clamp(1.25rem, 4vw, 2.5rem); }
-  .site-header.open .nav__cta { display: flex; padding: 0.6rem clamp(1.25rem, 4vw, 2.5rem) 0; }
-  .site-header.open .nav__cta .btn { width: 100%; }
-  .site-header.open .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .site-header.open .nav__toggle span:nth-child(2) { opacity: 0; }
-  .site-header.open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .nav__links a { font-size: 0.95rem; white-space: nowrap; }
 }
 
 /* ============================================================
@@ -165,11 +166,13 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 /* ============================================================
    ABOUT — principles (numbered columns)
    ============================================================ */
+/* The four principles read as one centred unit — heading included. */
+.principles-head { max-width: 760px; margin-inline: auto; text-align: center; }
 .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 3rem; }
 .principle { padding: 0 clamp(1rem, 2vw, 1.8rem); text-align: center; border-inline-start: 1px solid var(--line); }
 .principle:first-child { border-inline-start: 0; }
 .principle__num { font-family: var(--serif); color: var(--gold); font-size: 1rem; }
-.principle h3 { font-size: 1.5rem; margin: 1rem 0 0.7rem; }
+.principle h3 { font-size: clamp(1.65rem, 2.4vw, 1.85rem); margin: 1rem 0 0.75rem; }
 .principle p { color: var(--muted); font-size: 0.95rem; }
 
 /* generic prose section */
@@ -319,7 +322,12 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
   .hero__grid { grid-template-columns: 1fr; }
   .hero__media { order: -1; }
   .about__grid, .contact__grid, .attorney { grid-template-columns: 1fr; }
+  /* One column: the number + title must lead, otherwise each heading reads as
+     if it belongs to the block below it and the last one ("הסכמי ממון") looks
+     like an empty section. */
   .practice-item__grid { grid-template-columns: 1fr; }
+  .practice-item__side { order: -1; }
+  .practice-item__title { margin-bottom: 1.4rem; }
   .principles { grid-template-columns: 1fr 1fr; gap: 2rem 0; }
   .article-cards { grid-template-columns: 1fr 1fr; }
   .cta-band__grid { grid-template-columns: 1fr; }
