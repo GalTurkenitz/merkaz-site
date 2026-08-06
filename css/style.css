@@ -186,7 +186,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
    PRACTICE (services)
    ============================================================ */
 .practice-item { padding-block: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid var(--line); }
-.practice-item__grid { display: grid; grid-template-columns: 1fr 0.55fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+/* Title column leads on the right, where a Hebrew reader starts. */
+.practice-item__grid { display: grid; grid-template-columns: 0.55fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.practice-item__side { order: -1; }
 .practice-item__side { text-align: start; }
 .practice-item__num { font-family: var(--serif); color: var(--gold); font-size: 1.05rem; }
 .practice-item__title { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-top: 0.6rem; }
@@ -326,7 +328,6 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
      if it belongs to the block below it and the last one ("הסכמי ממון") looks
      like an empty section. */
   .practice-item__grid { grid-template-columns: 1fr; }
-  .practice-item__side { order: -1; }
   .practice-item__title { margin-bottom: 1.4rem; }
   .principles { grid-template-columns: 1fr 1fr; gap: 2rem 0; }
   .article-cards { grid-template-columns: 1fr 1fr; }
