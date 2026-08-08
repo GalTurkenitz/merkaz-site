@@ -3,12 +3,12 @@
    Palette sampled from approved design references.
    ============================================================ */
 :root {
-  /* Palette adopted from goldfarb.com — deep plum + magenta accent + mint pop + light lavender. */
+  /* Palette adopted from goldfarb.com — deep plum + magenta accent + champagne accent + light lavender. */
   --green: #330028;            /* dark surface (header/footer/hero/stats/cta) + headings */
   --green-800: #6b0555;        /* magenta — dark-surface hover / gradient partner */
   --gold: #6b0555;             /* brand accent (readable on light surfaces) */
   --gold-soft: #7d1466;        /* accent hover */
-  --mint: #a6ebbd;             /* bright accent — used on dark surfaces */
+  --champagne: #e3c08a;        /* warm accent for text on the dark plum surfaces */
   --cream: #f4ebef;            /* light lavender section background */
   --cream-2: #faf6f9;          /* lightest background */
   --card: #fffdfe;             /* card background */
@@ -346,7 +346,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 /* ============================================================
    Goldfarb palette — accent by context (colours only, no layout).
    The magenta brand accent reads on the light content sections;
-   the bright mint accent is used where accents sit on the dark
+   the champagne accent is used where accents sit on the dark
    plum surfaces (hero / stats / CTA / footer / nav).
    ============================================================ */
 .btn--gold { color: var(--white); }
@@ -356,18 +356,18 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 .stat__num,
 .cta-band__eyebrow,
 .article-hero .eyebrow,
-.footer__phone { color: var(--mint); }
-.hero .link-gold { color: var(--mint); }
+.footer__phone { color: var(--champagne); }
+.hero .link-gold { color: var(--champagne); }
 .hero .link-gold:hover { color: var(--white); }
 .nav__links a:hover,
-.nav__links a.is-active { color: var(--mint); }
-.nav__links a.is-active::after { background: var(--mint); }
+.nav__links a.is-active { color: var(--champagne); }
+.nav__links a.is-active::after { background: var(--champagne); }
 .footer__nav a:hover,
-.footer__legal a:hover { color: var(--mint); }
+.footer__legal a:hover { color: var(--champagne); }
 
 /* The supplied ARTICLE graphics still carry the old green/gold colours baked in
    (they only repeat text shown elsewhere), so they stay masked behind a plum
-   panel + mint document mark until real article images arrive.
+   panel + champagne document mark until real article images arrive.
    about__media is excluded — it now holds a real photograph. */
 .article-card__img,
 .article-figure {
@@ -381,7 +381,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 .article-figure::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background-repeat: no-repeat; background-position: center; background-size: 60px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a6ebbd' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2.5h7l5 5v14H6z'/%3E%3Cpath d='M13 2.5V8h5'/%3E%3Cpath d='M9 13h6M9 16.5h6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3c08a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2.5h7l5 5v14H6z'/%3E%3Cpath d='M13 2.5V8h5'/%3E%3Cpath d='M9 13h6M9 16.5h6'/%3E%3C/svg%3E");
 }
 .article-figure::after { background-size: 96px; }
 
@@ -391,14 +391,14 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 .testimonials { background: var(--green); color: #fff; }
 .testimonials__head { max-width: 760px; margin-inline: auto; text-align: center; }
 .testimonials__head .title { color: #fff; }
-/* --gold is plum and disappears on this dark surface; mint is the dark-surface accent. */
-.testimonials__head .eyebrow { color: var(--mint); }
+/* --gold is plum and disappears on this dark surface; champagne is the dark-surface accent. */
+.testimonials__head .eyebrow { color: var(--champagne); }
 .tst__badge {
   display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 1.4rem;
   border: 1px solid var(--line-dark); border-radius: 999px; padding: 0.55rem 1.2rem;
   font-size: 0.95rem; font-weight: 600;
 }
-.tst__stars { color: var(--mint); letter-spacing: 0.08em; }
+.tst__stars { color: var(--champagne); letter-spacing: 0.08em; }
 .testimonials__grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem; margin-top: 3rem;
@@ -410,7 +410,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 }
 .tst__quote { color: rgba(255, 255, 255, 0.88); font-size: 0.98rem; line-height: 1.8; margin: 0; }
 .tst__by { display: flex; align-items: center; gap: 0.7rem; margin-top: auto; }
-.tst__name { font-family: var(--serif); font-weight: 700; color: var(--mint); }
+.tst__name { font-family: var(--serif); font-weight: 700; color: var(--champagne); }
 .tst__g { width: 20px; height: 20px; margin-inline-start: auto; background: #fff; border-radius: 50%; padding: 3px; }
 .tst__badge .tst__g { margin-inline-start: 0; }
 
