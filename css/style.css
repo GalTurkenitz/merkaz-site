@@ -365,25 +365,24 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 .footer__nav a:hover,
 .footer__legal a:hover { color: var(--champagne); }
 
-/* The supplied ARTICLE graphics still carry the old green/gold colours baked in
-   (they only repeat text shown elsewhere), so they stay masked behind a plum
-   panel + champagne document mark until real article images arrive.
-   about__media is excluded — it now holds a real photograph. */
-.article-card__img,
-.article-figure {
+/* Real branded graphics are in place for every article except הסכם ממון, whose
+   old off-palette placeholder stays masked behind a plum panel + champagne
+   document mark until its graphic arrives. Scoped with .is-placeholder. */
+.article-card__img.is-placeholder,
+.article-figure.is-placeholder {
   position: relative;
   background: linear-gradient(150deg, var(--green), var(--green-800) 135%);
   overflow: hidden;
 }
-.article-card__img img,
-.article-figure img { opacity: 0; }
-.article-card__img::after,
-.article-figure::after {
+.article-card__img.is-placeholder img,
+.article-figure.is-placeholder img { opacity: 0; }
+.article-card__img.is-placeholder::after,
+.article-figure.is-placeholder::after {
   content: ''; position: absolute; inset: 0; pointer-events: none;
   background-repeat: no-repeat; background-position: center; background-size: 60px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3c08a' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 2.5h7l5 5v14H6z'/%3E%3Cpath d='M13 2.5V8h5'/%3E%3Cpath d='M9 13h6M9 16.5h6'/%3E%3C/svg%3E");
 }
-.article-figure::after { background-size: 96px; }
+.article-figure.is-placeholder::after { background-size: 96px; }
 
 /* ============================================================
    TESTIMONIALS (home) — real Google reviews
