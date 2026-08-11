@@ -83,6 +83,55 @@
     });
   }
 
+  /* ---------- stat counters ----------
+     The numbers roll up once, the first time the block scrolls into view.
+     The printed text is parsed rather than duplicated in JS, so the markup
+     stays the single source of truth (and is what a crawler or a visitor
+     without JS still sees). */
+  const statNums = document.querySelectorAll('.stat__num');
+  const prefersReduced = window.matchMedia
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
+  if (statNums.length && !prefersReduced) {
+    const parse = (txt) => {
+      const digits = txt.replace(/[^0-9]/g, '');
+      if (!digits) return null;
+      return {
+        target: Number(digits),
+        prefix: txt.slice(0, txt.indexOf(digits[0])),
+        suffix: txt.slice(txt.lastIndexOf(digits[digits.length - 1]) + 1),
+        grouped: txt.includes(','),
+      };
+    };
+
+    const run = (el) => {
+      const info = parse(el.textContent.trim());
+      if (!info) return;
+      const DURATION = 1400;
+      const start = performance.now();
+      const fmt = (n) => info.prefix + (info.grouped ? n.toLocaleString('en-US') : String(n)) + info.suffix;
+      el.textContent = fmt(0);
+      const tick = (now) => {
+        const t = Math.min((now - start) / DURATION, 1);
+        const eased = 1 - Math.pow(1 - t, 3);   // ease-out, lands softly
+        el.textContent = fmt(Math.round(info.target * eased));
+        if (t < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          io.unobserve(e.target);
+          run(e.target);
+        });
+      }, { threshold: 0.5 });
+      statNums.forEach((el) => io.observe(el));
+    }
+  }
+
   /* ---------- footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
