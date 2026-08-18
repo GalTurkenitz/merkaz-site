@@ -82,17 +82,20 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 /* ============================================================
    HEADER / NAV
    ============================================================ */
+.site-header .wrap { max-width: 1340px; }
 .site-header {
   position: sticky; top: 0; z-index: 100;
   background: var(--green);
   border-bottom: 1px solid var(--line-dark);
 }
-.nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 88px; }
-.nav__logo img { height: 62px; width: auto; border-radius: 3px; }
-.nav__links { display: flex; align-items: center; gap: clamp(0.5rem, 1.2vw, 1.25rem); }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 80px; }
+/* flex-shrink would squeeze the wordmark once the bar fills up. */
+.nav__logo { flex: 0 0 auto; }
+.nav__logo img { height: 46px; width: auto; border-radius: 3px; }
+.nav__links { display: flex; align-items: center; gap: clamp(0.45rem, 0.9vw, 1rem); }
 .nav__links a { white-space: nowrap; }
 .nav__links a {
-  color: rgba(255, 255, 255, 0.85); font-size: 0.98rem; font-weight: 500;
+  color: rgba(255, 255, 255, 0.85); font-size: 0.94rem; font-weight: 500;
   padding: 0.4rem 0; position: relative; transition: color 0.2s;
 }
 .nav__links a:hover, .nav__links a.is-active { color: var(--gold); }
@@ -103,8 +106,8 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 .nav__cta { display: inline-flex; white-space: nowrap; }
 .nav__phone, .nav__wa {
   display: inline-flex; align-items: center; gap: 0.45rem;
-  border-radius: 999px; padding: 0.5rem 0.95rem;
-  font-size: 0.9rem; font-weight: 600; white-space: nowrap;
+  border-radius: 999px; padding: 0.45rem 0.8rem;
+  font-size: 0.87rem; font-weight: 600; white-space: nowrap;
   transition: background 0.2s, color 0.2s, opacity 0.2s;
 }
 .nav__phone svg, .nav__wa svg { width: 17px; height: 17px; fill: currentColor; flex: 0 0 auto; }
@@ -120,9 +123,9 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 /* Desktop keeps the full row. Below it the links collapse behind the toggle,
    while the phone and WhatsApp stay in the bar as icons — those are the two
    things a visitor on a phone actually needs within reach. */
-@media (max-width: 1180px) {
+@media (max-width: 1300px) {
   .nav { gap: 0.6rem; min-height: 0; padding-block: 0.85rem; }
-  .nav__logo img { height: 48px; }
+  .nav__logo img { height: 44px; }
   .nav__toggle { display: flex; }
   .nav__actions { gap: 0.45rem; }
   .nav__phone span, .nav__wa span { display: none; }
