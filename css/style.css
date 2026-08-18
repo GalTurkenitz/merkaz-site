@@ -117,25 +117,36 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 }
 .nav__toggle span { width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.3s, opacity 0.2s; }
 
-/* Mobile: the whole menu stays on screen as a second, wrapping row — the
-   client asked that visitors see the sections instead of hunting for them
-   behind a hamburger, so the toggle is dropped entirely below this width. */
+/* Desktop keeps the full row. Below it the links collapse behind the toggle,
+   while the phone and WhatsApp stay in the bar as icons — those are the two
+   things a visitor on a phone actually needs within reach. */
 @media (max-width: 1180px) {
-  .nav { flex-wrap: wrap; gap: 0.75rem 1rem; min-height: 0; padding-block: 0.85rem; }
-  .nav__toggle { display: none; }
+  .nav { gap: 0.6rem; min-height: 0; padding-block: 0.85rem; }
   .nav__logo img { height: 48px; }
-  .nav__cta { display: inline-flex; padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+  .nav__toggle { display: flex; }
   .nav__actions { gap: 0.45rem; }
   .nav__phone span, .nav__wa span { display: none; }
   .nav__phone, .nav__wa { padding: 0.5rem; }
   .nav__phone svg, .nav__wa svg { width: 19px; height: 19px; }
-  .nav__links {
-    order: 3; width: 100%;
-    flex-wrap: wrap; justify-content: center;
-    row-gap: 0.55rem; column-gap: 1.15rem;
-    padding-top: 0.7rem; border-top: 1px solid var(--line-dark);
+  .nav__cta { padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+
+  .nav__links { display: none; }
+  .site-header.open .nav__links {
+    display: flex; position: absolute; inset-inline: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--green); border-top: 1px solid var(--line-dark);
+    border-bottom: 1px solid var(--line-dark); padding: 0.5rem 0 1rem; z-index: 60;
   }
-  .nav__links a { font-size: 0.95rem; white-space: nowrap; }
+  .site-header.open .nav__links a { padding: 0.9rem clamp(1.25rem, 4vw, 2.5rem); font-size: 1rem; }
+  .site-header.open .nav__toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .site-header.open .nav__toggle span:nth-child(2) { opacity: 0; }
+  .site-header.open .nav__toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* On a phone the bar carries logo, phone, WhatsApp and the toggle — the
+   "להשארת פרטים" button would overflow the row, and צור קשר is in the menu. */
+@media (max-width: 620px) {
+  .nav__cta { display: none; }
 }
 
 /* ============================================================
