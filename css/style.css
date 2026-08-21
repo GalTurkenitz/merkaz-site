@@ -92,6 +92,10 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 /* flex-shrink would squeeze the wordmark once the bar fills up. */
 .nav__logo { flex: 0 0 auto; }
 .nav__logo img { height: 46px; width: auto; border-radius: 3px; }
+/* Desktop carries the full wordmark including "לייפוי כוח מתמשך וצוואות";
+   a phone gets the compact mark, which drops the subtitle and the width
+   the bar no longer has to spare. */
+.nav__logo-compact { display: none; }
 .nav__links { display: flex; align-items: center; gap: clamp(0.45rem, 0.9vw, 1rem); }
 .nav__links a { white-space: nowrap; }
 .nav__links a {
@@ -148,6 +152,11 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 
 /* On a phone the bar carries logo, phone, WhatsApp and the toggle — the
    "להשארת פרטים" button would overflow the row, and צור קשר is in the menu. */
+@media (max-width: 768px) {
+  .nav__logo-full { display: none; }
+  .nav__logo-compact { display: block; }
+}
+
 @media (max-width: 620px) {
   .nav__cta { display: none; }
 }
