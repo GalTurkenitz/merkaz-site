@@ -124,10 +124,19 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--green
 }
 .nav__toggle span { width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.3s, opacity 0.2s; }
 
+/* Between a laptop and a wide screen the bar has room for the pages OR for the
+   contact labels, not both — the pages win, and the phone and WhatsApp keep
+   their icons. */
+@media (max-width: 1240px) {
+  .nav__phone span, .nav__wa span { display: none; }
+  .nav__phone, .nav__wa { padding: 0.5rem; }
+  .nav__phone svg, .nav__wa svg { width: 19px; height: 19px; }
+}
+
 /* Desktop keeps the full row. Below it the links collapse behind the toggle,
    while the phone and WhatsApp stay in the bar as icons — those are the two
    things a visitor on a phone actually needs within reach. */
-@media (max-width: 1300px) {
+@media (max-width: 1040px) {
   .nav { gap: 0.6rem; min-height: 0; padding-block: 0.85rem; }
   .nav__logo img { height: 44px; }
   .nav__toggle { display: flex; }
